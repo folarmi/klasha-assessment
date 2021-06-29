@@ -1,38 +1,50 @@
+import { useState } from "react";
+
 import logo from "../assets/logo.svg";
 import notification from "../assets/notification.svg";
+import harmburger from "../assets/harmburger.svg";
+import closeButton from "../assets/closeButton.png";
 import user from "../assets/user.svg";
-import { PayoutHeader, Account, Table } from "../components";
-import { general, mainPages } from "../data/Navbar";
+import { PayoutHeader, Account, Table, Sidebar, Navbar } from "../components";
 
 const Homepage = () => {
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => {
+    setSidebar(!sidebar);
+  };
   return (
-    <div className="m-auto mx-10 mt-6">
-      <div className="flex">
-        <div className="flex-none w-64 pt-10 px-10 sidebar h-screen">
-          <img src={logo} alt="logo" />
-          <section className="mt-8">
-            <p className="font-semibold text-base py-4 text-dark">Main pages</p>
-            {mainPages.map(({ id, item, image }) => {
-              return (
-                <div className="flex py-4" key-={id}>
-                  <img src={image} alt="item" className="mr-4" />
-                  <p>{item}</p>
-                </div>
-              );
-            })}
-          </section>
-          <p className="font-semibold text-base text-dark">General</p>
-          {general.map(({ id, item, image }) => {
-            return (
-              <div className="flex py-4" key-={id}>
-                <img src={image} alt="item" className="mr-4" />
-                <p>{item}</p>
-              </div>
-            );
-          })}
+    <div className="m-auto md:mx-10 mt-2 md:mt-6">
+      <div className="md:flex">
+        <div className="flex-none w-full md:w-64  pt-4 md:pt-10 px-4 md:px-10 sidebar h-16 md:h-screen">
+          <div className="flex justify-between">
+            <img src={logo} alt="logo" />
+            {sidebar ? (
+              <img
+                src={closeButton}
+                alt="harmburger"
+                className="md:hidden"
+                onClick={showSidebar}
+              />
+            ) : (
+              <img
+                src={harmburger}
+                alt="harmburger"
+                className="md:hidden"
+                onClick={showSidebar}
+              />
+            )}
+          </div>
+          {sidebar && (
+            <div className="w-full z-40 bg-brown ml-24">
+              <Sidebar sidebar={sidebar} />
+            </div>
+          )}
+          <div className="hidden md:block">
+            <Navbar />
+          </div>
         </div>
-        <div className="flex-grow w-16 bg-white px-10 shadow-md">
-          <div className="flex justify-between items-center">
+        <div className="flex-grow w-full md:w-16 bg-white px-2 md:px-10 shadow-md">
+          <div className="flex justify-between items-center pt-4 md:pt-0">
             <section>
               <p className="font-bold text-lg font-dark mb-2">Balances</p>
               <p className="font-normal text-xs text-ash">
@@ -46,7 +58,7 @@ const Homepage = () => {
             </section>
           </div>
 
-          <section className="mt-28">
+          <section className="mt-10 md:mt-28">
             <Account />
             <PayoutHeader />
             <Table />

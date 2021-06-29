@@ -10,7 +10,7 @@ import team from "../assets/team.svg";
 export const mainPages = [
   {
     id: "1",
-    item: "dashboard",
+    item: "Dashboard",
     image: dashboard,
   },
   {
