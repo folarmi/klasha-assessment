@@ -2,7 +2,7 @@ import downArrow from "../assets/downArrow.svg";
 
 const Account = () => {
   return (
-    <div className="flex border border-lightAsh rounded-md w-full md:w-3/4">
+    <div className="flex border border-lightAsh rounded-md w-full lg:w-3/4">
       <section className="m-2" style={{ flex: "1" }}>
         <div className="flex items-baseline justify-between border-b border-lightAsh">
           <p className="font-normal text-green text-sm pb-2">

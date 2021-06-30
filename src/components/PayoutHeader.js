@@ -3,8 +3,8 @@ import calendar from "../assets/calendar.svg";
 
 const PayoutHeader = () => {
   return (
-    <div className="md:flex justify-between w-full mt-8">
-      <p className="font-bold text-lg text-dark text-center md:text-left">
+    <div className="lg:flex justify-between w-full mt-8">
+      <p className="font-bold text-lg text-dark text-center mb-4 lg:mb-0 lg:text-left">
         Payout table
       </p>
       <div className="flex md:justify-between">
